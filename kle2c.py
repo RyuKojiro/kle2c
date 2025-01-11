@@ -10,12 +10,26 @@ parser.add_argument('files', type=str, nargs='+',
 
 args = parser.parse_args()
 
+specials = {
+        "Esc" : "KEY_ESC",
+        "Tab" : "KEY_TAB",
+        "Ctrl" : "KEY_LEFT_CTRL",
+        "Shift" : "KEY_LEFT_SHIFT",
+        "Option" : "KEY_RIGHT_ALT",
+        "⌘" : "KEY_RIGHT_GUI",
+        "" : "KEY_SPACE",
+}
 
 def keyName(kle):
-    if "\n" in key:
-        return key.split("\n")[1].lower()
+    result = key
 
-    return key.lower()
+    if "\n" in key:
+        result = key.split("\n")[1]
+
+    if result in specials:
+        return specials[result]
+
+    return "'%c'" % result.lower()
 
 for arg in args.files:
     with open(arg) as fp:
@@ -37,8 +51,7 @@ for arg in args.files:
             print("\t{", end='')
             for key in row:
                 if type(key) is not dict:
-                    print("'", end='')
                     print(keyName(key), end='')
-                    print("', ", end='')
+                    print(", ", end='')
             print("},")
         print("};")
