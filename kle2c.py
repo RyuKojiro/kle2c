@@ -18,7 +18,7 @@ specials = {
         "Option" : "KEY_RIGHT_ALT",
         "⌘" : "KEY_RIGHT_GUI",
         "Command" : "KEY_RIGHT_GUI",
-        "" : " ",
+        "" : "KEY_SPACE",
 }
 
 def keyName(kle):
