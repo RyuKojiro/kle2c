@@ -17,6 +17,7 @@ specials = {
         "Shift" : "KEY_LEFT_SHIFT",
         "Option" : "KEY_RIGHT_ALT",
         "⌘" : "KEY_RIGHT_GUI",
+        "Command" : "KEY_RIGHT_GUI",
         "" : "KEY_SPACE",
 }
 
